@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <style>
+      * {
+				margin: 0;
+				padding: 0;				
+			}
+
+			body {
+				background-color: #000;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			ul, li {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+      .menu {
+        
+      }
+
+      .item {
+        color:white;
+        cursor: pointer;
+        font-weight: 800;
+        position:relative;
+        height:100px;
+      }
+
+      .item a.text {
+        font-size:4em;
+        transition: all 1s ease;
+        position: absolute;
+        transform: translateY(0px);
+      }
+
+      .item a.text:hover {
+        transform: translateY(-20px);
+        color:#222;
+      }
+
+      .over-item {
+        position: absolute;
+        font-size:18px;
+        letter-spacing: 100px;
+        pointer-events: none;
+        opacity: 0;
+        color: #fff;
+        bottom:20px;
+        margin-left:5px;
+        transition: all 1s ease;
+        text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #0fa,
+        0 0 82px #0fa,
+        0 0 92px #0fa,
+        0 0 102px #0fa,
+        0 0 151px #0fa;
+      }
+
+      .item:hover .over-item {
+        letter-spacing: 0px;
+        opacity: 1;
+      }
+
+      .test li{
+        
+        
+      } 
+
+      .test ul {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .test li a {
+        color:#fff;
+        font-size:4em;
+        font-weight: 700;
+        position:relative;
+        display:block;
+        transition: 0.5s;
+        transition-delay: 0.5s;
+      }
+
+      .test li a:hover {
+        color: rgba(255, 255, 255, 0.1);
+        transform:translateY(-20px);
+        transition-delay: 0s;
+      }
+
+      .test li a::before {
+        content: attr(data-text);
+        font-size:15px;
+        position:absolute;
+        pointer-events: none;
+        bottom: -10px;
+        transition: 1s;
+        opacity: 0;
+        letter-spacing: 100px;
+        color: #3bffe8;
+        transition: 0.5s;
+        text-shadow: 0 0 10px #3bffe8, 0 0 30px #3bffe8, 0 0 80px #3bffe8;
+      }
+
+      .test li a:hover::before {
+        opacity: 1;
+        letter-spacing:7px;
+        transition-delay: 0.25s;
+      }
+
+    </style>
+  </head>
+  <body>
+      <div>
+        <!-- <ul class = 'menu'>
+          <li class = 'item'> 
+            <a class = 'text'>HOME</a>
+            <a class ='over-item'>HOME</a>
+          </li>
+          <li class = 'item'> 
+            ABOUT
+          </li>
+          <li class = 'item'> 
+            SERVICES
+          </li>
+        </ul> -->
+      </div>
+
+      <div> 
+        <ul class = 'test'>
+          <li>
+            <a data-text='HOME'>HOME</a>
+          </li>
+          <li>
+            <a data-text='ABOUT'>ABOUT</a>
+          </li>
+          <li>
+            <a data-text='SERVICES'>SERVICES</a>
+          </li>
+          <li>
+            <a data-text='TEAM'>TEAM</a>
+          </li>
+          <li>
+            <a data-text='CONTACT'>CONTACT</a>
+          </li>
+        </ul>
+      </div>
+  </body>
+</html>
