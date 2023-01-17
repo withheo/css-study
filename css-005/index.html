@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <style>
+      body {
+        width:100%;
+        height:100vh;
+        margin:0;
+        padding:0;
+        background-color: #e2e2e2;;
+      }
+      .canvas {
+        margin-left: 100px;
+        margin-top: 100px;
+        border:1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <canvas id = "c" class ='canvas'></canvas>
+    </div>
+
+    <script>
+      const c = document.getElementById("c");
+      const ctx = c.getContext('2d');
+      c.width = 500;
+      c.height = 600;
+
+      function rotateCoordi(x, y, cx, cy, deg) {
+        const angle = deg * Math.PI/180;
+        return [
+          (x - cx) * Math.cos(angle) - (y - cy) * Math.sin(angle) + cx,
+          1 * (x - cx) * Math.sin(angle) + (y - cy) * Math.cos(angle) + cy,
+        ];
+      }
+
+      function draw(x, y, width ,height , color = 'black') {
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, width, height);
+      }
+      
+      function rotate(deg, cx, cy) {
+        const d = deg * Math.PI/180;
+        ctx.translate(cx,cy)
+        ctx.rotate(d)
+        ctx.translate(-cx,-cy)
+      }
+      /**
+       *  우리가 아는 x,y  는 radian 값이  위로 증가 해야한다..
+       *  그런데.. canvas radian  은??? 
+       *  
+       */
+      const cx = 100 + 150; // x1 + width / 2 ( 중심 좌표 값인데 ..)
+      const cy = 200 + 100; // y1 + height / 2 (중심 좌표 값인데 ..)
+      let degree = 0;
+      ctx.save();
+      rotate(10, cx, cy);
+      draw(100, 200, 300, 200);
+
+      rotate(30, cx, cy);
+      draw(100, 200, 300, 200);
+      ctx.restore();
+      draw(119, 175, 100, 100, 'red');
+
+      function animate() {
+        setInterval(() => {
+          degree += 1;
+          ctx.save();
+          ctx.clearRect(0, 0 , c.width ,c.height);
+          rotate(degree % 360, cx, cy);
+          draw(100, 200, 300, 200);
+          ctx.restore();
+        },10)
+        
+      }
+
+     // animate();
+      
+      
+      console.log(rotateCoordi(100,200,cx,cy,10))
+      console.log(rotateCoordi(400,200,cx,cy,10))
+      console.log(rotateCoordi(400,400,cx,cy,10))
+      console.log(rotateCoordi(100,200,cx,cy,10))
+    </script>
+  </body>
+</html>
